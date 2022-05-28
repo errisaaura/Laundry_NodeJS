@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const md5 = require('md5');
 
-
 //implementasi library
 const app = express();
 app.use(bodyParser.json());
@@ -29,19 +28,8 @@ const jwt = require("jsonwebtoken")
 const res = require("express/lib/response")
 const SECRET_KEY = "BelajarNodeJSItuMenyenangkan"
 
-//konfigurasi storage image, destination dan filename
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, "./image/member")
-//     },
-//     filename: (req, file, cb => {
-//         cb(null, "img-" + Date.now() + path.extname(file.originalname))
-//     })
-// })
-// let upload = multer({storage: storage})
 
-
-//endpoint menampilkan semua data admin, method: GET, function: findAll()
+//endpoint menampilkan semua data member, method: GET, function: findAll()
 app.get("/", (req,res) => {
     member.findAll()
         .then(result => {
@@ -56,7 +44,7 @@ app.get("/", (req,res) => {
             })
         })
 })
-//GET ADMIN by ID, METHOD: GET, FUNCTION: findOne
+//GET Member by ID, METHOD: GET, FUNCTION: findOne
 app.get("/tampil/:id_member", (req, res) => {
     let param = {
         id_member : req.params.id_member
@@ -74,7 +62,7 @@ app.get("/tampil/:id_member", (req, res) => {
 
 })
 
-//endpoint untuk menyimpan data admin, METHOD: POST, function: create
+//endpoint untuk menyimpan data member, METHOD: POST, function: create
 app.post("/", (req,res) => {
    
         let data = {
@@ -100,7 +88,7 @@ app.post("/", (req,res) => {
     
 })
 
-//endpoint mengupdate data admin, METHOD: PUT, function:update
+//endpoint mengupdate data member, METHOD: PUT, function:update
 app.put("/:id_member", (req,res) => {
     let param = {
         id_member : req.params.id_member
@@ -125,7 +113,7 @@ app.put("/:id_member", (req,res) => {
         })
 })
 
-//endpoint menghapus data admin, METHOD: DELETE, function: destroy
+//endpoint menghapus data member, METHOD: DELETE, function: destroy
 app.delete("/:id_member", (req,res) => {
     let param = {
         id_member : req.params.id_member
@@ -142,7 +130,8 @@ app.delete("/:id_member", (req,res) => {
             })
         })
 })
-     
+  
+//ini untuk search mencari member sesuai id, nama, gender, phone dan username
 app.post("/search", async (req,res)=>{
     let keyword = req.body.keyword
     let result = await member.findAll({

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //ini menyambungkan ke tabel detail transaksi
       this.hasMany(models.detail_transaksi, {
         foreignKey: "id_paket",
         as: "detail_paket"

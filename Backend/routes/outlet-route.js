@@ -17,7 +17,7 @@ const outlet = model.outlet
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op
 
-//endpoint menampilkan semua data admin, method: GET, function: findAll()
+//endpoint menampilkan semua data outlet, method: GET, function: findAll()
 app.get("/", (req,res) => {
     outlet.findAll()
         .then(result => {
@@ -32,7 +32,7 @@ app.get("/", (req,res) => {
             })
         })
 })
-//GET ADMIN by ID, METHOD: GET, FUNCTION: findOne
+//GET outlet by ID, METHOD: GET, FUNCTION: findOne
 app.get("/tampil/:id_outlet", (req, res) => {
     let param = {
         id_outlet : req.params.id_outlet
@@ -50,7 +50,7 @@ app.get("/tampil/:id_outlet", (req, res) => {
 
 })
 
-//endpoint untuk menyimpan data admin, METHOD: POST, function: create
+//endpoint untuk menyimpan data outlet, METHOD: POST, function: create
 app.post("/", (req,res) => {
     let data = {
         nama : req.body.nama,
@@ -71,7 +71,7 @@ app.post("/", (req,res) => {
         })
 })
 
-//endpoint mengupdate data admin, METHOD: PUT, function:update
+//endpoint mengupdate data outlet, METHOD: PUT, function:update
 app.put("/:id_outlet", (req,res) => {
     let param = {
         id_outlet : req.params.id_outlet
@@ -94,7 +94,7 @@ app.put("/:id_outlet", (req,res) => {
         })
 })
 
-//endpoint menghapus data admin, METHOD: DELETE, function: destroy
+//endpoint menghapus data outlet, METHOD: DELETE, function: destroy
 app.delete("/:id_outlet", (req,res) => {
     let param = {
         id_outlet : req.params.id_outlet
@@ -112,7 +112,7 @@ app.delete("/:id_outlet", (req,res) => {
         })
 })
 
-//search admin by name & username, method: post
+//search outlet by id, nama, alamat & phone, method: post
 app.post("/search", async (req,res)=>{
     let keyword = req.body.keyword
     let result = await outlet.findAll({

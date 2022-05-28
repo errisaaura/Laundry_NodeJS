@@ -10,11 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // ini nyambungkan ke transaksi. Jadi 1 admin bisa melakukan banyak transaksi
       this.hasMany(models.transaksi, {
         foreignKey: "id_admin",
         as: "admin"
       })
+      //ini menerima sambungan dr outlet. denga foreign id_outlet
       this.belongsTo(models.outlet, {
         foreignKey: "id_outlet",
         as: "outlet"

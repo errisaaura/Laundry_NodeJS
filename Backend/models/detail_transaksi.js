@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //ini menerima sambungan dari transaksi dgn foreign id_transaksi
       this.belongsTo(models.transaksi, {
         foreignKey: "id_transaksi",
         as: "transaksi"
       })
+      //ini menerima sambungan dari paket dgn foreign id_paket
       this.belongsTo(models.paket, {
         foreignKey: "id_paket",
         as: "paket"

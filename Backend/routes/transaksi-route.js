@@ -14,6 +14,8 @@ const Op = Sequelize.Op
 
 
 // //JIKA BELUM LUNAS TANGGAL BAYAR TETEP NULL/LANGSUNG TERISI NULL
+
+//ini untuk menampilkan semua transaksi
 app.get("/", async (req, res) =>{
     try {
         let result = await transaksi.findAll({
@@ -37,6 +39,7 @@ app.get("/", async (req, res) =>{
     }
 })
 
+//ini menampilkan transaksi by id transaksi
 app.get ("/transaksi/:id_transaksi", async (req,res) => {
     let param = { id_transaksi: req.params.id_transaksi}
     let result = await transaksi.findAll({
@@ -61,6 +64,7 @@ app.get ("/transaksi/:id_transaksi", async (req,res) => {
     })
 })
 
+//ini menampilkan transaksi by id_outlet
 app.get ("/:id_outlet", async (req,res) => {
     let param = { id_outlet : req.params.id_outlet}
     let result = await transaksi.findAll({
@@ -88,6 +92,7 @@ app.get ("/:id_outlet", async (req,res) => {
     })
 })
 
+//ini menambahkan transaksi 
 app.post("/", async (req,res) => {
     let current = new Date().toISOString().split('T')[0]
     let data = {
@@ -127,6 +132,7 @@ app.post("/", async (req,res) => {
     })
 })
 
+//ini untuk update transaksi berdasarkan id
 app.put("/:id_transaksi", (req, res) =>{
     let param = { id_transaksi: req.params.id_transaksi}
     let data = {
@@ -149,6 +155,7 @@ app.put("/:id_transaksi", (req, res) =>{
     })
 })
 
+//ini untuk menghapus transaksi
 app.delete("/:id_transaksi", async (req, res) =>{
     let param = { id_transaksi: req.params.id_transaksi}
     try {
@@ -164,6 +171,7 @@ app.delete("/:id_transaksi", async (req, res) =>{
     }
 })
 
+//ini untuk search pada laporan transaksi itu
 app.post ("/date/:id_outlet", async (req, res) =>{
     let start = new Date(req.body.start)
     let end = new Date(req.body.end)

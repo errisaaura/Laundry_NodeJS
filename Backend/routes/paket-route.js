@@ -163,6 +163,7 @@ app.delete("/:id_paket", async (req,res) => {
     }
 })
 
+//ini untuk search atau mencari paket by id, nama, and price
 app.post("/search", async (req,res)=>{
     let keyword = req.body.keyword
     let result = await paket.findAll({

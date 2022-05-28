@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      //ini nyambungkan ke transaksi. jadi 1 member bisa melakukan banyak transaksi
       this.hasMany(models.transaksi, {
         foreignKey: "id_member",
         as : "transaksi_member"
